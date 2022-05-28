@@ -1,5 +1,7 @@
+import json
 from flask import Flask
 from about_me import me
+from mock_data import catalog #IMPORTANT STEP
 
 app = Flask('blueberry')
 
@@ -23,6 +25,11 @@ def address():
 
 # JSON - JaveScript Object Notation
 ############################################################################################# API ENDPOINTS ##################################################################################################
+
+@app.route("/api/catalog", methods=["GET"])
+def get_catalog():
+    return json.dumps(catalog)
+
 
 
 app.run(debug=True)
